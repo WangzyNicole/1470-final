@@ -153,7 +153,8 @@ class ImageNetPreprocessor:
             img = self.ra_layer(img)
 
         # map to [0,1]
-        img = tf.image.convert_image_dtype(img, tf.float32)
+        # img = tf.image.convert_image_dtype(img, tf.float32)
+        img = tf.cast(img, tf.float32) / 255.0 
         if self.cutout_layer is not None:
             img = self.cutout_layer(img)
 
